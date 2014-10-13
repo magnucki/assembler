@@ -1,0 +1,197 @@
+Register:
+eax            0x0 
+ebx            0x0
+ecx            0x0
+edx            0x0
+
+#########################
+#          eg1:         #
+#########################
+
+------------------------
+
+Register:
+eax            0x11111111
+ebx            0x22222222
+ecx            0x33333333
+edx            0x44444444
+
+Flags:
+IF
+------------------------
+
+add            ebx,edx
+
+Register:
+eax            0x11111111
+ebx            0x66666666
+ecx            0x33333333
+edx            0x44444444
+
+Flags:
+IF PF
+
+-------------------------
+
+adc            eax,ecx
+
+Register:
+eax            0x44444444
+ebx            0x66666666
+ecx            0x33333333
+edx            0x44444444
+
+Flags:
+IF PF
+
+#########################
+#          eg2:         #
+#########################
+
+Register:
+eax            0x11111111
+ebx            0x22222222
+ecx            0x33333333
+edx            0xdddddddd
+
+Flags:
+PF IF 
+------------------------
+
+add            ebx,edx
+
+Register:
+eax            0x11111111
+ebx            0xffffffff
+ecx            0x33333333
+edx            0xdddddddd
+
+Flags:
+PF SF IF 
+
+-------------------------
+
+adc            eax,ecx
+
+Register:
+eax            0x44444444
+ebx            0xffffffff
+ecx            0x33333333
+edx            0xdddddddd
+
+Flags:
+IF PF
+
+#########################
+#          eg3:         #
+#########################
+
+Register:
+eax            0x11111111
+ebx            0x22222222
+ecx            0x33333333
+edx            0xddddddde
+
+Flags:
+PF IF 
+------------------------
+
+add            ebx,edx
+
+Register:
+eax            0x11111111
+ebx            0x00000000
+ecx            0x33333333
+edx            0xddddddde
+
+Flags:
+CF PF AF ZF IF
+
+-------------------------
+
+adc            eax,ecx
+
+Register:
+eax            0x11111111
+ebx            0x00000000
+ecx            0x33333333
+edx            0xdddddddd
+
+Flags:
+CF PF AF ZF IF
+
+#########################
+#          eg4:         #
+#########################
+
+Register:
+eax            0x11111111
+ebx            0x22222222
+ecx            0x33333333
+edx            0xeeeeeeee
+
+Flags:
+IF 
+------------------------
+
+add            ebx,edx
+
+Register:
+eax            0x11111111
+ebx            0x11111110
+ecx            0x33333333
+edx            0xeeeeeeee
+
+Flags:
+CF AF IF
+
+-------------------------
+
+adc            eax,ecx
+
+Register:
+eax            0x44444445
+ebx            0xffffffff
+ecx            0x33333333
+edx            0xdddddddd
+
+Flags:
+IF
+
+#########################
+#          eg5:         #
+#########################
+
+Register:
+eax            0x11111111
+ebx            0x22222222
+ecx            0xeeeeeeee
+edx            0xeeeeeeee
+
+Flags:
+IF 
+------------------------
+
+add            ebx,edx
+
+Register:
+eax            0x11111111
+ebx            0x11111110
+ecx            0xeeeeeeee
+edx            0xeeeeeeee
+
+Flags:
+CF AF IF
+
+-------------------------
+
+adc            eax,ecx
+
+Register:
+eax            0x00000000
+ebx            0x11111110
+ecx            0xeeeeeeee
+edx            0xeeeeeeee
+
+Flags:
+CF PF AF ZF IF
